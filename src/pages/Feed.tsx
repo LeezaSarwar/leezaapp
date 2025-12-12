@@ -104,7 +104,7 @@ export function Feed({ mode }: FeedProps) {
                 ) : (
                   <Link to="/signup">
                     <Button variant="default">
-                      Join Chirp
+                      Join Social Spark
                     </Button>
                   </Link>
                 )}

@@ -79,7 +79,7 @@ export function Auth({ mode }: AuthProps) {
           toast.error(error.message || 'Failed to sign up');
         }
       } else {
-        toast.success('Account created! Welcome to Chirp!');
+        toast.success('Account created! Welcome to Social Spark!');
         navigate('/');
       }
     }
@@ -93,10 +93,10 @@ export function Auth({ mode }: AuthProps) {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 mb-6">
             <div className="h-10 w-10 rounded-full gradient-primary" />
-            <span className="font-display text-2xl font-bold text-gradient">Chirp</span>
+            <span className="font-display text-2xl font-bold text-gradient">Social Spark</span>
           </Link>
           <h1 className="font-display text-3xl font-bold text-foreground">
-            {mode === 'login' ? 'Welcome back' : 'Join Chirp'}
+            {mode === 'login' ? 'Welcome back' : 'Join Social Spark'}
           </h1>
           <p className="text-muted-foreground mt-2">
             {mode === 'login' 

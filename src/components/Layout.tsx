@@ -27,7 +27,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="container mx-auto flex h-16 items-center justify-between px-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-full gradient-primary" />
-            <span className="font-display text-xl font-bold text-gradient">Chirp</span>
+            <span className="font-display text-xl font-bold text-gradient">Social Spark</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">
