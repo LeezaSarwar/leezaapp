@@ -192,7 +192,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      is_valid_url: { Args: { url: string }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
