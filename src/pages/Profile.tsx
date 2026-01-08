@@ -46,7 +46,9 @@ export function Profile() {
         .order('created_at', { ascending: false });
 
       if (error) {
-        console.error('Error fetching posts:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error fetching posts:', error);
+        }
         setPostsLoading(false);
         return;
       }

@@ -65,7 +65,9 @@ export function usePosts(mode: 'global' | 'following' = 'global') {
     const { data: postsData, error } = await query;
 
     if (error) {
-      console.error('Error fetching posts:', error);
+      if (import.meta.env.DEV) {
+        console.error('Error fetching posts:', error);
+      }
       setLoading(false);
       return;
     }

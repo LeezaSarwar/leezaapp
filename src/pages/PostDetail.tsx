@@ -43,7 +43,9 @@ export function PostDetail() {
         .single();
 
       if (error || !postData) {
-        console.error('Error fetching post:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error fetching post:', error);
+        }
         setLoading(false);
         return;
       }

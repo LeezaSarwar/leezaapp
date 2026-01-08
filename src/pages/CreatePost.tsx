@@ -12,11 +12,25 @@ import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
 import { toast } from 'sonner';
 
+const safeUrlSchema = z.string()
+  .url('Must be a valid URL')
+  .refine(
+    (url) => {
+      try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    },
+    { message: 'URL must use http or https protocol' }
+  );
+
 const postSchema = z.object({
   content: z.string()
     .min(1, 'Post cannot be empty')
     .max(500, 'Post must be less than 500 characters'),
-  image_url: z.string().url('Must be a valid URL').or(z.literal('')).optional(),
+  image_url: safeUrlSchema.or(z.literal('')).optional(),
 });
 
 export function CreatePost() {
