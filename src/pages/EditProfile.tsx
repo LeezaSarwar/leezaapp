@@ -13,9 +13,23 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Spinner } from '@/components/ui/spinner';
 import { toast } from 'sonner';
 
+const safeUrlSchema = z.string()
+  .url('Must be a valid URL')
+  .refine(
+    (url) => {
+      try {
+        const parsed = new URL(url);
+        return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    },
+    { message: 'URL must use http or https protocol' }
+  );
+
 const profileSchema = z.object({
   display_name: z.string().max(50, 'Display name must be less than 50 characters').optional(),
-  avatar_url: z.string().url('Must be a valid URL').or(z.literal('')).optional(),
+  avatar_url: safeUrlSchema.or(z.literal('')).optional(),
   bio: z.string().max(160, 'Bio must be less than 160 characters').optional(),
 });
 

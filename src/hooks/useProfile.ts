@@ -35,7 +35,9 @@ export function useProfile(userId?: string) {
       .single();
 
     if (error) {
-      console.error('Error fetching profile:', error);
+      if (import.meta.env.DEV) {
+        console.error('Error fetching profile:', error);
+      }
       setLoading(false);
       return;
     }

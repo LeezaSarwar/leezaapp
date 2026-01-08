@@ -43,7 +43,9 @@ export function useComments(postId: string) {
       .order('created_at', { ascending: true });
 
     if (error) {
-      console.error('Error fetching comments:', error);
+      if (import.meta.env.DEV) {
+        console.error('Error fetching comments:', error);
+      }
       setLoading(false);
       return;
     }
